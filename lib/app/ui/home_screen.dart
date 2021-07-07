@@ -5,28 +5,31 @@ import '../ui/components/indicator.dart';
 import 'components/services.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    Key? key,
-  }) : super(key: key);
+  const HomeScreen({Key? key, required this.onTap}) : super(key: key);
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 30.0,
         brightness: Brightness.light,
         elevation: 0.0,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Color(0xFF0d894b),
         centerTitle: true,
         title: Image.asset(
           'assets/white_logo.png',
           fit: BoxFit.cover,
           height: 22,
         ),
-        leading: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage('assets/avatar.jpg'),
+        leading: GestureDetector(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/avatar.jpg'),
+            ),
           ),
         ),
         actions: [
@@ -51,7 +54,7 @@ class HomeScreen extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Container(
-                  color: Theme.of(context).primaryColor,
+                  color: Color(0xFF0d894b),
                   height: 190,
                 ),
                 _FirstCard(), // Completed
